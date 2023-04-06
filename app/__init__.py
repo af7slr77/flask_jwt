@@ -12,6 +12,10 @@ def create_app():
     migrate.init_app(app, db)
     
     with app.app_context():
+        from .routes import bp_user
+
+        app.register_blueprint(bp_user)
+
         db.create_all()
 
         return app
